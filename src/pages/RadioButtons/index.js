@@ -45,6 +45,9 @@ function RadioButtons(props) {
   const [secondGroup, setSecondgroup] = useState([...response.menus[1]]);
   const [thirdGroup, setThirdgroup] = useState([...response.menus[2]]);
   const [firstChoice, setFirstChoice] = useState("");
+  const [secondChoice, setSecondChoice] = useState("");
+  const [thirdChoice, setThirdChoice] = useState("");
+
   const [submitEnabled, setSubmitEnabled] = useState(false);
 
   const rules = response.rules;
@@ -155,6 +158,7 @@ function RadioButtons(props) {
     // Disable the appropriate items in the first and second group based on the rules
     disableItems(rules, group3, firstChoice);
     disableItems(rules, group3, event.target.id);
+    setSecondChoice(event.target.id)
   }
 
   // This handles all the events when clicking on the third group of radio buttons
@@ -163,7 +167,8 @@ function RadioButtons(props) {
     let group = resetGroupSelection(thirdGroup); // remove selections from third group
     let updatedGroup = enableItem(group, event.target.id); // make the selected item appear checked
     setThirdgroup(updatedGroup); // Update the third group to properly appear in the UI
-    setSubmitEnabled(true); // Enable submit button as per the requirements
+    setSubmitEnabled(true); // Enable submit button as per the requirements\
+    setThirdChoice(event.target.id)
   }
 
   // This function is tied to the reset button, to reset any data and selections from all the groups of radio buttons at any point.
@@ -194,7 +199,12 @@ function RadioButtons(props) {
   // Functionality for clicking on the submit button. Only displays alert (because there is nothing to submit)
   function handleSubmit(event) {
     event.preventDefault();
-    alert("Successfully submitted order!");
+    //alert("Successfully submitted order!");
+    let choice1 = firstGroup.find(obj=>{return obj.id === firstChoice});
+    let choice2 = secondGroup.find(obj=>{return obj.id === secondChoice});
+    let choice3 = thirdGroup.find(obj=>{return obj.id === thirdChoice});
+
+    alert("Your choices are: "+choice1.value + ", "+ choice2.value + ", and " + choice3.value);
   }
 
   return (
