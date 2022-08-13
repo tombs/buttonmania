@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
 import Home from "./pages/Home/Home";
 import RadioButtons from "./pages/RadioButtons";
 import Unauthorized from "./pages/Unauthorized";
