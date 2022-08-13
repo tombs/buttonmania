@@ -214,13 +214,11 @@ function RadioButtons(props) {
         name="firstgroup"
         handleChange={handleFirstChange}
       />
-      <br />
       <RadioGroup
         group={secondGroup}
         name="secondgroup"
         handleChange={handleSecondChange}
       />
-      <br />
       <RadioGroup
         group={thirdGroup}
         name="thirdgroup"
