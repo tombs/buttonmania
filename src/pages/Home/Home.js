@@ -1,5 +1,7 @@
 const Home = () => {
-    return <h1>Home</h1>;
+    return <>
+    <h2>Click on the RadioButtons menu to begin!</h2>
+    </>
   };
   
   export default Home;
