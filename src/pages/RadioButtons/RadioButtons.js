@@ -1,9 +1,12 @@
+import "./styles.css";
+
 function RadioGroup(props) {
   return (
-    <>
+    <div className="control-group">
     {props.group.map((menu) => {
       return (
-        <label>
+        
+        <label className="control control--radio">
           <input
             id={menu.id}
             type="radio"
@@ -14,10 +17,12 @@ function RadioGroup(props) {
             checked={menu.selected ? menu.selected : false}
           />
           {menu.value}
+          <div className="control__indicator"></div>
         </label>
+        
       );
     })}
-    </>
+    </div>
   );
 }
 
