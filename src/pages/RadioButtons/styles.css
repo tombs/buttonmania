@@ -151,3 +151,34 @@ h1 {
 .select select:disabled ~ .select__arrow {
   border-top-color: #ccc;
 }
+
+.form-submit-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 4px;
+}
+  .form-submit-button:hover {
+  background: #3a15b4;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+  text-shadow: none;
+  }
+
+  .form-submit-button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+  .buttonHolder{
+    text-align: center;
+}
