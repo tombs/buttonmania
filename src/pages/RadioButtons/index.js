@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import RadioGroup from "./RadioButtons";
 
+import "./styles.css";
+
 const response = {
   menus: [
     // first group of radio-buttons
@@ -158,7 +160,7 @@ function RadioButtons(props) {
     // Disable the appropriate items in the first and second group based on the rules
     disableItems(rules, group3, firstChoice);
     disableItems(rules, group3, event.target.id);
-    setSecondChoice(event.target.id)
+    setSecondChoice(event.target.id);
   }
 
   // This handles all the events when clicking on the third group of radio buttons
@@ -168,7 +170,7 @@ function RadioButtons(props) {
     let updatedGroup = enableItem(group, event.target.id); // make the selected item appear checked
     setThirdgroup(updatedGroup); // Update the third group to properly appear in the UI
     setSubmitEnabled(true); // Enable submit button as per the requirements\
-    setThirdChoice(event.target.id)
+    setThirdChoice(event.target.id);
   }
 
   // This function is tied to the reset button, to reset any data and selections from all the groups of radio buttons at any point.
@@ -200,38 +202,61 @@ function RadioButtons(props) {
   function handleSubmit(event) {
     event.preventDefault();
     //alert("Successfully submitted order!");
-    let choice1 = firstGroup.find(obj=>{return obj.id === firstChoice});
-    let choice2 = secondGroup.find(obj=>{return obj.id === secondChoice});
-    let choice3 = thirdGroup.find(obj=>{return obj.id === thirdChoice});
+    let choice1 = firstGroup.find((obj) => {
+      return obj.id === firstChoice;
+    });
+    let choice2 = secondGroup.find((obj) => {
+      return obj.id === secondChoice;
+    });
+    let choice3 = thirdGroup.find((obj) => {
+      return obj.id === thirdChoice;
+    });
 
-    alert("Your choices are: "+choice1.value + ", "+ choice2.value + ", and " + choice3.value);
+    alert(
+      "Your choices are: " +
+        choice1.value +
+        ", " +
+        choice2.value +
+        ", and " +
+        choice3.value
+    );
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <RadioGroup
-        group={firstGroup}
-        name="firstgroup"
-        handleChange={handleFirstChange}
-      />
-      <RadioGroup
-        group={secondGroup}
-        name="secondgroup"
-        handleChange={handleSecondChange}
-      />
-      <RadioGroup
-        group={thirdGroup}
-        name="thirdgroup"
-        handleChange={handleThirdChange}
-      />
-      <br />
-      <br />
-      <button type="reset" onClick={resetForm}>
-        {" "}
-        Reset
-      </button>
-      <br />
-      <input disabled={!submitEnabled} type="submit" value="Submit" />
+      <div class="buttonHolder">
+        <RadioGroup
+          group={firstGroup}
+          name="firstgroup"
+          handleChange={handleFirstChange}
+        />
+        <RadioGroup
+          group={secondGroup}
+          name="secondgroup"
+          handleChange={handleSecondChange}
+        />
+        <RadioGroup
+          group={thirdGroup}
+          name="thirdgroup"
+          handleChange={handleThirdChange}
+        />
+      </div>
+      <div class="buttonHolder">
+        <button
+          className="form-submit-button "
+          type="reset"
+          onClick={resetForm}
+        >
+          {" "}
+          Reset
+        </button>
+        <input
+          className="form-submit-button "
+          disabled={!submitEnabled}
+          type="submit"
+          value="Submit"
+        />
+      </div>
     </form>
   );
 }
